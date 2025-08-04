@@ -1,9 +1,52 @@
-[gd_scene load_steps=3 format=3 uid="uid://8vbanyed7o7a"]
+[gd_scene load_steps=5 format=3 uid="uid://8vbanyed7o7a"]
 
 [ext_resource type="Texture2D" uid="uid://c2eh77m25fyi" path="res://assets/customer.png" id="1_4dakr"]
 [ext_resource type="Script" uid="uid://q1cicrgml8f3" path="res://gameobjects/customer.gd" id="2_g51yq"]
+[ext_resource type="Texture2D" uid="uid://c3lmavud6uyif" path="res://assets/order_bubble.png" id="3_j6hkb"]
+[ext_resource type="Texture2D" uid="uid://dp1dfpovorhl2" path="res://assets/potion_orange.png" id="3_pwvap"]
 
-[node name="Customer" type="TextureRect"]
+[node name="Customer" type="Control"]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 256.0
+offset_bottom = 256.0
+script = ExtResource("2_g51yq")
+
+[node name="Person" type="TextureRect" parent="."]
+offset_top = 128.0
+offset_right = 128.0
+offset_bottom = 256.0
 texture = ExtResource("1_4dakr")
 expand_mode = 2
-script = ExtResource("2_g51yq")
+
+[node name="OrderBubble" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 128.0
+offset_right = 256.0
+offset_bottom = 128.0
+texture = ExtResource("3_j6hkb")
+
+[node name="Potion" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 32.0
+offset_right = 224.0
+offset_bottom = 96.0
+texture = ExtResource("3_pwvap")
+
+[node name="TimerDisplay" type="Label" parent="."]
+layout_mode = 0
+offset_top = 83.0
+offset_right = 128.0
+offset_bottom = 128.0
+theme_override_colors/font_color = Color(0.93547, 0.244127, 0.157223, 1)
+theme_override_font_sizes/font_size = 32
+text = "9"
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_timer_timeout"]

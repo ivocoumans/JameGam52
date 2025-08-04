@@ -38,7 +38,6 @@ func add_ingredient(id: int) -> void:
 func clear_ingredients() -> void:
 	ingredient_ids = []
 	texture = null
-	print("Bucket cleared")
 
 
 func get_potion() -> Globals.PotionType:
