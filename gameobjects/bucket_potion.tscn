@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgjrr22la0f7l"]
+
+[ext_resource type="Script" uid="uid://dg0plojbtwdc7" path="res://gameobjects/bucket_potion.gd" id="1_ixi7y"]
+
+[node name="BucketPotion" type="TextureRect"]
+script = ExtResource("1_ixi7y")

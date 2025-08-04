@@ -1,0 +1,90 @@
+[gd_scene load_steps=8 format=3 uid="uid://boo72pcxkwau"]
+
+[ext_resource type="Script" uid="uid://bub53qw6ofrol" path="res://scenes/main.gd" id="1_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://btyl8xk4nrib3" path="res://gameobjects/ingredient.tscn" id="2_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://bv7mrvo8atsbc" path="res://gameobjects/bucket.tscn" id="3_tefeu"]
+[ext_resource type="PackedScene" uid="uid://8vbanyed7o7a" path="res://gameobjects/customer.tscn" id="4_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://dgjrr22la0f7l" path="res://gameobjects/bucket_potion.tscn" id="4_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://dhwxtdtaxn3nm" path="res://gameobjects/retry.tscn" id="6_tefeu"]
+[ext_resource type="PackedScene" uid="uid://xeqihlf6hgky" path="res://gameobjects/finish.tscn" id="7_o6xl0"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_jyhfs")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+mouse_filter = 2
+
+[node name="IngredientShelf" type="HBoxContainer" parent="UI"]
+layout_mode = 0
+offset_top = 64.0
+offset_right = 1280.0
+offset_bottom = 128.0
+mouse_filter = 2
+alignment = 1
+
+[node name="Ingredient1" parent="UI/IngredientShelf" instance=ExtResource("2_tbgi4")]
+layout_mode = 2
+
+[node name="Ingredient2" parent="UI/IngredientShelf" instance=ExtResource("2_tbgi4")]
+layout_mode = 2
+type = 1
+
+[node name="Ingredient3" parent="UI/IngredientShelf" instance=ExtResource("2_tbgi4")]
+layout_mode = 2
+type = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="UI"]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+mouse_filter = 2
+
+[node name="Bucket" parent="UI/CenterContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="BucketPotion" parent="UI/CenterContainer" instance=ExtResource("4_tbgi4")]
+layout_mode = 2
+
+[node name="CustomerQueue" type="HBoxContainer" parent="UI"]
+layout_mode = 0
+offset_top = 528.0
+offset_right = 1280.0
+offset_bottom = 656.0
+mouse_filter = 2
+alignment = 1
+
+[node name="Customer1" parent="UI/CustomerQueue" instance=ExtResource("4_o6xl0")]
+layout_mode = 2
+
+[node name="Retry" parent="UI" instance=ExtResource("6_tefeu")]
+visible = false
+layout_mode = 0
+offset_left = 765.0
+offset_top = 289.0
+offset_right = 829.0
+offset_bottom = 353.0
+
+[node name="Finish" parent="UI" instance=ExtResource("7_o6xl0")]
+visible = false
+layout_mode = 0
+offset_left = 764.0
+offset_top = 366.0
+offset_right = 828.0
+offset_bottom = 430.0
+
+[node name="Score" type="Label" parent="UI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 35
+text = "Score: 0"
+
+[connection signal="ingredient_selected" from="UI/IngredientShelf/Ingredient1" to="." method="_ingredient_selected"]
+[connection signal="ingredient_selected" from="UI/IngredientShelf/Ingredient2" to="." method="_ingredient_selected"]
+[connection signal="ingredient_selected" from="UI/IngredientShelf/Ingredient3" to="." method="_ingredient_selected"]
+[connection signal="retry_clicked" from="UI/Retry" to="." method="_retry_clicked"]
+[connection signal="finish_clicked" from="UI/Finish" to="." method="_finish_clicked"]

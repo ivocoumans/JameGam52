@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhwxtdtaxn3nm"]
+
+[ext_resource type="Texture2D" uid="uid://m0d74e404pc8" path="res://assets/retry.png" id="1_h8bca"]
+[ext_resource type="Script" uid="uid://dax5bbrnb2lj0" path="res://gameobjects/retry.gd" id="2_iqlwu"]
+
+[node name="Retry" type="TextureButton"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("1_h8bca")
+texture_pressed = ExtResource("1_h8bca")
+texture_hover = ExtResource("1_h8bca")
+texture_disabled = ExtResource("1_h8bca")
+texture_focused = ExtResource("1_h8bca")
+script = ExtResource("2_iqlwu")
+
+[connection signal="pressed" from="." to="." method="_button_pressed"]

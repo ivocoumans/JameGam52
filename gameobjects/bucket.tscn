@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bv7mrvo8atsbc"]
+
+[ext_resource type="Texture2D" uid="uid://c3x0xwisrfquk" path="res://assets/bucket.png" id="1_rdww7"]
+
+[node name="Bucket" type="TextureRect"]
+texture = ExtResource("1_rdww7")

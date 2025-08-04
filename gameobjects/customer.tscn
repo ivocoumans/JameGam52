@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://8vbanyed7o7a"]
+
+[ext_resource type="Texture2D" uid="uid://c2eh77m25fyi" path="res://assets/customer.png" id="1_4dakr"]
+[ext_resource type="Script" uid="uid://q1cicrgml8f3" path="res://gameobjects/customer.gd" id="2_g51yq"]
+
+[node name="Customer" type="TextureRect"]
+texture = ExtResource("1_4dakr")
+expand_mode = 2
+script = ExtResource("2_g51yq")
