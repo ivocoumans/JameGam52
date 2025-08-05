@@ -21,7 +21,10 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Globals="*res://gameobjects/globals.gd"
+Bucket="*res://gameobjects/bucket.gd"
+Ingredients="*res://gameobjects/ingredients.gd"
+Potions="*res://gameobjects/potions.gd"
+Recipes="*res://gameobjects/recipes.gd"
 
 [display]
 

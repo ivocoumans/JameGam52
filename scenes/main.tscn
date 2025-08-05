@@ -1,9 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://boo72pcxkwau"]
+[gd_scene load_steps=11 format=3 uid="uid://boo72pcxkwau"]
 
 [ext_resource type="Script" uid="uid://bub53qw6ofrol" path="res://scenes/main.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://btyl8xk4nrib3" path="res://gameobjects/ingredient.tscn" id="2_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://bfwqw816tn725" path="res://assets/background.png" id="2_tipki"]
 [ext_resource type="PackedScene" uid="uid://bv7mrvo8atsbc" path="res://gameobjects/bucket.tscn" id="3_tefeu"]
+[ext_resource type="Texture2D" uid="uid://dpgqu66e2mbgm" path="res://assets/panel.png" id="4_85g3d"]
 [ext_resource type="PackedScene" uid="uid://dgjrr22la0f7l" path="res://gameobjects/bucket_potion.tscn" id="4_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://culwrujspemne" path="res://assets/potion_healing.png" id="5_choun"]
+[ext_resource type="Texture2D" uid="uid://dsj62ib26vcvf" path="res://assets/bucket_empty.png" id="5_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://dhwxtdtaxn3nm" path="res://gameobjects/retry.tscn" id="6_tefeu"]
 [ext_resource type="PackedScene" uid="uid://xeqihlf6hgky" path="res://gameobjects/finish.tscn" id="7_o6xl0"]
 
@@ -17,11 +21,17 @@ offset_right = 1280.0
 offset_bottom = 720.0
 mouse_filter = 2
 
+[node name="Background" type="TextureRect" parent="UI"]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("2_tipki")
+
 [node name="IngredientShelf" type="HBoxContainer" parent="UI"]
 layout_mode = 0
-offset_top = 64.0
+offset_top = 40.0
 offset_right = 1280.0
-offset_bottom = 128.0
+offset_bottom = 104.0
 mouse_filter = 2
 alignment = 1
 
@@ -32,14 +42,98 @@ layout_mode = 2
 layout_mode = 2
 type = 1
 
-[node name="Ingredient3" parent="UI/IngredientShelf" instance=ExtResource("2_tbgi4")]
+[node name="IngredientShelf2" type="HBoxContainer" parent="UI"]
+layout_mode = 0
+offset_top = 120.0
+offset_right = 1280.0
+offset_bottom = 184.0
+mouse_filter = 2
+alignment = 1
+
+[node name="Moonbell" parent="UI/IngredientShelf2" instance=ExtResource("2_tbgi4")]
 layout_mode = 2
 type = 2
 
+[node name="Shadowbark" parent="UI/IngredientShelf2" instance=ExtResource("2_tbgi4")]
+layout_mode = 2
+type = 6
+
+[node name="CrimsonSage" parent="UI/IngredientShelf2" instance=ExtResource("2_tbgi4")]
+layout_mode = 2
+type = 3
+
+[node name="Thornweed" parent="UI/IngredientShelf2" instance=ExtResource("2_tbgi4")]
+visible = false
+layout_mode = 2
+type = 4
+
+[node name="EmberRoot" parent="UI/IngredientShelf2" instance=ExtResource("2_tbgi4")]
+visible = false
+layout_mode = 2
+type = 5
+
+[node name="IngredientShelf3" type="HBoxContainer" parent="UI"]
+layout_mode = 0
+offset_top = 200.0
+offset_right = 1280.0
+offset_bottom = 264.0
+mouse_filter = 2
+alignment = 1
+
+[node name="UnicornDust" parent="UI/IngredientShelf3" instance=ExtResource("2_tbgi4")]
+visible = false
+layout_mode = 2
+type = 7
+
+[node name="PixieWings" parent="UI/IngredientShelf3" instance=ExtResource("2_tbgi4")]
+visible = false
+layout_mode = 2
+type = 9
+
+[node name="DragonScales" parent="UI/IngredientShelf3" instance=ExtResource("2_tbgi4")]
+visible = false
+layout_mode = 2
+type = 8
+
+[node name="TrollFat" parent="UI/IngredientShelf3" instance=ExtResource("2_tbgi4")]
+visible = false
+layout_mode = 2
+type = 10
+
+[node name="NinePatchRect" type="NinePatchRect" parent="UI"]
+layout_mode = 0
+offset_left = 1088.0
+offset_top = 32.0
+offset_right = 1248.0
+offset_bottom = 192.0
+texture = ExtResource("4_85g3d")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="Potion" type="TextureRect" parent="UI"]
+layout_mode = 0
+offset_left = 1168.0
+offset_top = 48.0
+offset_right = 1232.0
+offset_bottom = 112.0
+texture = ExtResource("5_choun")
+
+[node name="Recipe" type="HBoxContainer" parent="UI"]
+layout_mode = 0
+offset_left = 848.0
+offset_top = 112.0
+offset_right = 1232.0
+offset_bottom = 176.0
+mouse_filter = 2
+alignment = 2
+
 [node name="CenterContainer" type="CenterContainer" parent="UI"]
 layout_mode = 0
+offset_top = 112.0
 offset_right = 1280.0
-offset_bottom = 592.0
+offset_bottom = 704.0
 mouse_filter = 2
 
 [node name="Bucket" parent="UI/CenterContainer" instance=ExtResource("3_tefeu")]
@@ -47,35 +141,45 @@ layout_mode = 2
 
 [node name="BucketPotion" parent="UI/CenterContainer" instance=ExtResource("4_tbgi4")]
 layout_mode = 2
-
-[node name="CustomerQueue" type="HBoxContainer" parent="UI"]
-layout_mode = 0
-offset_left = 504.0
-offset_top = 432.0
-offset_right = 1280.0
-offset_bottom = 688.0
-mouse_filter = 2
+texture = ExtResource("5_o6xl0")
 
 [node name="Retry" parent="UI" instance=ExtResource("6_tefeu")]
 layout_mode = 0
 offset_left = 739.0
-offset_top = 225.0
+offset_top = 337.0
 offset_right = 803.0
-offset_bottom = 289.0
+offset_bottom = 401.0
 
 [node name="Finish" parent="UI" instance=ExtResource("7_o6xl0")]
 layout_mode = 0
 offset_left = 738.0
-offset_top = 302.0
+offset_top = 414.0
 offset_right = 802.0
-offset_bottom = 366.0
+offset_bottom = 478.0
+
+[node name="CustomerQueue" type="HBoxContainer" parent="UI"]
+layout_mode = 0
+offset_left = 504.0
+offset_top = 464.0
+offset_right = 1280.0
+offset_bottom = 720.0
+mouse_filter = 2
 
 [node name="Score" type="Label" parent="UI"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_top = 56.0
+offset_right = 117.0
+offset_bottom = 105.0
 theme_override_font_sizes/font_size = 35
-text = "Score: 0"
+text = "Gold: 0"
+
+[node name="TimeLeft" type="Label" parent="UI"]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 117.0
+offset_bottom = 50.0
+theme_override_font_sizes/font_size = 35
+text = "Time left: 30"
 
 [node name="GameOverFade" type="ColorRect" parent="UI"]
 visible = false
@@ -104,7 +208,15 @@ autostart = true
 
 [connection signal="ingredient_selected" from="UI/IngredientShelf/Ingredient1" to="." method="_ingredient_selected"]
 [connection signal="ingredient_selected" from="UI/IngredientShelf/Ingredient2" to="." method="_ingredient_selected"]
-[connection signal="ingredient_selected" from="UI/IngredientShelf/Ingredient3" to="." method="_ingredient_selected"]
+[connection signal="ingredient_selected" from="UI/IngredientShelf2/Moonbell" to="." method="_ingredient_selected"]
+[connection signal="ingredient_selected" from="UI/IngredientShelf2/Shadowbark" to="." method="_ingredient_selected"]
+[connection signal="ingredient_selected" from="UI/IngredientShelf2/CrimsonSage" to="." method="_ingredient_selected"]
+[connection signal="ingredient_selected" from="UI/IngredientShelf2/Thornweed" to="." method="_ingredient_selected"]
+[connection signal="ingredient_selected" from="UI/IngredientShelf2/EmberRoot" to="." method="_ingredient_selected"]
+[connection signal="ingredient_selected" from="UI/IngredientShelf3/UnicornDust" to="." method="_ingredient_selected"]
+[connection signal="ingredient_selected" from="UI/IngredientShelf3/PixieWings" to="." method="_ingredient_selected"]
+[connection signal="ingredient_selected" from="UI/IngredientShelf3/DragonScales" to="." method="_ingredient_selected"]
+[connection signal="ingredient_selected" from="UI/IngredientShelf3/TrollFat" to="." method="_ingredient_selected"]
 [connection signal="retry_clicked" from="UI/Retry" to="." method="_retry_clicked"]
 [connection signal="finish_clicked" from="UI/Finish" to="." method="_finish_clicked"]
 [connection signal="timeout" from="NextCustomerTimer" to="." method="_next_customer_timer_timeout"]

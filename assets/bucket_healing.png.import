@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://o6soq2fyrhs5"
-path="res://.godot/imported/ingredient_red.png-6a2604a46e27487016a484a6326cea8e.ctex"
+uid="uid://diwoe3axmaxc2"
+path="res://.godot/imported/bucket_healing.png-f2aaf1b3940aee588f1156ec5b3dee6b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ingredient_red.png"
-dest_files=["res://.godot/imported/ingredient_red.png-6a2604a46e27487016a484a6326cea8e.ctex"]
+source_file="res://assets/bucket_healing.png"
+dest_files=["res://.godot/imported/bucket_healing.png-f2aaf1b3940aee588f1156ec5b3dee6b.ctex"]
 
 [params]
 

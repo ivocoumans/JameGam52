@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://kvytj1ns5dtv"
-path="res://.godot/imported/potion_purple.png-b2601d2943b640a9b53078e36e9ccbd1.ctex"
+uid="uid://dwmlsp8qcbqal"
+path="res://.godot/imported/bucket_strength.png-81a06a2a577667cda0283e51464762f9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/potion_purple.png"
-dest_files=["res://.godot/imported/potion_purple.png-b2601d2943b640a9b53078e36e9ccbd1.ctex"]
+source_file="res://assets/bucket_strength.png"
+dest_files=["res://.godot/imported/bucket_strength.png-81a06a2a577667cda0283e51464762f9.ctex"]
 
 [params]
 

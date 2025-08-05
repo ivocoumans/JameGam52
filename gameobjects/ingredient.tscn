@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://btyl8xk4nrib3"]
 
-[ext_resource type="Texture2D" uid="uid://bl5htg7qrdnjn" path="res://assets/ingredient_blue.png" id="1_n4rk7"]
+[ext_resource type="Texture2D" uid="uid://xhx7m80ey3v3" path="res://assets/ingredient_moonbell.png" id="1_vtyfo"]
 [ext_resource type="Script" uid="uid://b1i5dx4svrmvy" path="res://gameobjects/ingredient.gd" id="2_f3urf"]
 
 [node name="Ingredient" type="TextureButton"]
-texture_normal = ExtResource("1_n4rk7")
+texture_normal = ExtResource("1_vtyfo")
 script = ExtResource("2_f3urf")
 
 [connection signal="pressed" from="." to="." method="_button_pressed"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btepwamyu5cy6"
-path="res://.godot/imported/ingredient_yellow.png-29439cde8c5469e38b915272397c5ff8.ctex"
+uid="uid://chuj6qre3fadu"
+path="res://.godot/imported/ingredient_emberroot.png-da123f1264f91004307f2902f0191a7f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ingredient_yellow.png"
-dest_files=["res://.godot/imported/ingredient_yellow.png-29439cde8c5469e38b915272397c5ff8.ctex"]
+source_file="res://assets/ingredient_emberroot.png"
+dest_files=["res://.godot/imported/ingredient_emberroot.png-da123f1264f91004307f2902f0191a7f.ctex"]
 
 [params]
 

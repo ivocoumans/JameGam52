@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dp1dfpovorhl2"
-path="res://.godot/imported/potion_orange.png-b5a23fa924fd4dd1891c2c5df4af9b9e.ctex"
+uid="uid://ceawl744qxthf"
+path="res://.godot/imported/bucket_invalid.png-9df3a8aa06aee81b4aeb35a81f0d26e7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/potion_orange.png"
-dest_files=["res://.godot/imported/potion_orange.png-b5a23fa924fd4dd1891c2c5df4af9b9e.ctex"]
+source_file="res://assets/bucket_invalid.png"
+dest_files=["res://.godot/imported/bucket_invalid.png-9df3a8aa06aee81b4aeb35a81f0d26e7.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjcdibd57fdja"
-path="res://.godot/imported/potion_green.png-5eb1a3cad2f0a4f05eb2a85f8b12880f.ctex"
+uid="uid://bx78ptggm8n53"
+path="res://.godot/imported/potion_antidote.png-587cd1bcef25ef55c77ba0ef0c4cd632.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/potion_green.png"
-dest_files=["res://.godot/imported/potion_green.png-5eb1a3cad2f0a4f05eb2a85f8b12880f.ctex"]
+source_file="res://assets/potion_antidote.png"
+dest_files=["res://.godot/imported/potion_antidote.png-587cd1bcef25ef55c77ba0ef0c4cd632.ctex"]
 
 [params]
 

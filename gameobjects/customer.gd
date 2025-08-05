@@ -1,35 +1,26 @@
 class_name Customer
 extends Control
 
-@onready var texture_green: Texture2D = preload("res://assets/potion_green.png")
-@onready var texture_orange: Texture2D = preload("res://assets/potion_orange.png")
-@onready var texture_purple: Texture2D = preload("res://assets/potion_purple.png")
-
-@export var type: Globals.PotionType
+@export var type: Potions.Types
 
 signal customer_left(customer: Customer)
 
-var current_timer_display_value = 0
+var _current_timer_display_value = 0
+var wait_time = 20
 
 
 func _ready() -> void:
-	var is_valid: bool = type != Globals.PotionType.Invalid
+	var is_valid: bool = type != null
 	
 	$OrderBubble.visible = is_valid
 	$Potion.visible = is_valid
 	$TimerDisplay.visible = false
 	
-	match type:
-		Globals.PotionType.Green:
-			_set_textures(texture_green)
-		Globals.PotionType.Orange:
-			_set_textures(texture_orange)
-		Globals.PotionType.Purple:
-			_set_textures(texture_purple)
+	_set_textures(Potions.textures[type])
 	
 	if is_valid:
-		$Timer.start(randi_range(7, 15))
-		current_timer_display_value = ceil($Timer.time_left) as int
+		$Timer.start(wait_time)
+		_current_timer_display_value = ceil($Timer.time_left) as int
 
 
 func _process(_delta: float) -> void:
@@ -40,9 +31,9 @@ func _process(_delta: float) -> void:
 	if $TimerDisplay.visible == false:
 		return
 	
-	if current_timer_value != current_timer_display_value:
-		current_timer_display_value = current_timer_value
-		$TimerDisplay.text = str(current_timer_display_value)
+	if current_timer_value != _current_timer_display_value:
+		_current_timer_display_value = current_timer_value
+		$TimerDisplay.text = str(_current_timer_display_value)
 
 
 func _set_textures(new_texture: Texture2D) -> void:

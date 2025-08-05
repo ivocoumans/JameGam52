@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://dgjrr22la0f7l"]
+[gd_scene load_steps=3 format=3 uid="uid://dgjrr22la0f7l"]
 
+[ext_resource type="Texture2D" uid="uid://diwoe3axmaxc2" path="res://assets/bucket_healing.png" id="1_fw0f8"]
 [ext_resource type="Script" uid="uid://dg0plojbtwdc7" path="res://gameobjects/bucket_potion.gd" id="1_ixi7y"]
 
 [node name="BucketPotion" type="TextureRect"]
+texture = ExtResource("1_fw0f8")
 script = ExtResource("1_ixi7y")
