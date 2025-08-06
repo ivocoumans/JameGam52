@@ -4,12 +4,33 @@ var is_finished: bool = false
 var ingredient_ids: Array[int]
 
 
-func add_ingredient(id: int) -> bool:
-	if ingredient_ids.has(id):
+func add_ingredient(ingredient: Ingredients.Types) -> bool:
+	# prevent duplicates
+	if ingredient_ids.has(ingredient):
 		return false
-	ingredient_ids.append(id)
+
+	# prevent conflicting ingredient types
+	var duplicate_liquid_base = _is_liquid_base(ingredient) and ingredient_ids.any(_is_liquid_base)
+	var duplicate_herb = _is_herb(ingredient) and ingredient_ids.any(_is_herb)
+	var duplicate_reagent = _is_reagent(ingredient) and ingredient_ids.any(_is_reagent)
+	if duplicate_liquid_base or duplicate_herb or duplicate_reagent:
+		return false
+	
+	ingredient_ids.append(ingredient)
 	texture = _get_result_texture()
 	return true
+
+
+func _is_liquid_base(ingredient: Ingredients.Types) -> bool:
+	return ingredient in [Ingredients.Types.Water, Ingredients.Types.Wine]
+
+
+func _is_herb(ingredient: Ingredients.Types) -> bool:
+	return ingredient in [Ingredients.Types.Moonbell, Ingredients.Types.CrimsonSage, Ingredients.Types.Thornweed, Ingredients.Types.EmberRoot, Ingredients.Types.Shadowbark]
+
+
+func _is_reagent(ingredient: Ingredients.Types) -> bool:
+	return ingredient in [Ingredients.Types.UnicornDust, Ingredients.Types.PixieWings, Ingredients.Types.DragonScales, Ingredients.Types.TrollFat]
 
 
 func clear_ingredients() -> void:

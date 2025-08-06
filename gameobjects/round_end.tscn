@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7rnm1lovl7f"]
+
+[ext_resource type="Script" uid="uid://dga36370bh4j6" path="res://gameobjects/round_end.gd" id="1_46w1f"]
+
+[node name="RoundEnd" type="CenterContainer"]
+custom_minimum_size = Vector2(1280, 720)
+offset_right = 1280.0
+offset_bottom = 720.0
+script = ExtResource("1_46w1f")
+
+[node name="Background" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(1280, 720)
+layout_mode = 2
+color = Color(0.717647, 0.717647, 0.717647, 0.490196)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="EndText" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Game Over!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContinueText" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Press ENTER or CLICK to continue"
+horizontal_alignment = 1
+vertical_alignment = 1

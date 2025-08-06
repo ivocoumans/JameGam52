@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://boo72pcxkwau"]
+[gd_scene load_steps=12 format=3 uid="uid://boo72pcxkwau"]
 
 [ext_resource type="Script" uid="uid://bub53qw6ofrol" path="res://scenes/main.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://btyl8xk4nrib3" path="res://gameobjects/ingredient.tscn" id="2_tbgi4"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dsj62ib26vcvf" path="res://assets/bucket_empty.png" id="5_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://dhwxtdtaxn3nm" path="res://gameobjects/retry.tscn" id="6_tefeu"]
 [ext_resource type="PackedScene" uid="uid://xeqihlf6hgky" path="res://gameobjects/finish.tscn" id="7_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://b7rnm1lovl7f" path="res://gameobjects/round_end.tscn" id="11_ya4ey"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_jyhfs")
@@ -29,36 +30,41 @@ texture = ExtResource("2_tipki")
 
 [node name="IngredientShelf" type="HBoxContainer" parent="UI"]
 layout_mode = 0
-offset_top = 40.0
+offset_top = 37.0
 offset_right = 1280.0
-offset_bottom = 104.0
+offset_bottom = 101.0
 mouse_filter = 2
 alignment = 1
 
-[node name="Ingredient1" parent="UI/IngredientShelf" instance=ExtResource("2_tbgi4")]
+[node name="Water" parent="UI/IngredientShelf" instance=ExtResource("2_tbgi4")]
+visible = false
 layout_mode = 2
 
-[node name="Ingredient2" parent="UI/IngredientShelf" instance=ExtResource("2_tbgi4")]
+[node name="Wine" parent="UI/IngredientShelf" instance=ExtResource("2_tbgi4")]
+visible = false
 layout_mode = 2
 type = 1
 
 [node name="IngredientShelf2" type="HBoxContainer" parent="UI"]
 layout_mode = 0
-offset_top = 120.0
+offset_top = 117.0
 offset_right = 1280.0
-offset_bottom = 184.0
+offset_bottom = 181.0
 mouse_filter = 2
 alignment = 1
 
 [node name="Moonbell" parent="UI/IngredientShelf2" instance=ExtResource("2_tbgi4")]
+visible = false
 layout_mode = 2
 type = 2
 
 [node name="Shadowbark" parent="UI/IngredientShelf2" instance=ExtResource("2_tbgi4")]
+visible = false
 layout_mode = 2
 type = 6
 
 [node name="CrimsonSage" parent="UI/IngredientShelf2" instance=ExtResource("2_tbgi4")]
+visible = false
 layout_mode = 2
 type = 3
 
@@ -74,9 +80,9 @@ type = 5
 
 [node name="IngredientShelf3" type="HBoxContainer" parent="UI"]
 layout_mode = 0
-offset_top = 200.0
+offset_top = 197.0
 offset_right = 1280.0
-offset_bottom = 264.0
+offset_bottom = 261.0
 mouse_filter = 2
 alignment = 1
 
@@ -100,7 +106,13 @@ visible = false
 layout_mode = 2
 type = 10
 
-[node name="NinePatchRect" type="NinePatchRect" parent="UI"]
+[node name="RecipePreview" type="Control" parent="UI"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="UI/RecipePreview"]
 layout_mode = 0
 offset_left = 1088.0
 offset_top = 32.0
@@ -112,7 +124,7 @@ patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
 
-[node name="Potion" type="TextureRect" parent="UI"]
+[node name="Potion" type="TextureRect" parent="UI/RecipePreview"]
 layout_mode = 0
 offset_left = 1168.0
 offset_top = 48.0
@@ -120,7 +132,7 @@ offset_right = 1232.0
 offset_bottom = 112.0
 texture = ExtResource("5_choun")
 
-[node name="Recipe" type="HBoxContainer" parent="UI"]
+[node name="Recipe" type="HBoxContainer" parent="UI/RecipePreview"]
 layout_mode = 0
 offset_left = 848.0
 offset_top = 112.0
@@ -181,22 +193,9 @@ offset_bottom = 50.0
 theme_override_font_sizes/font_size = 35
 text = "Time left: 30"
 
-[node name="GameOverFade" type="ColorRect" parent="UI"]
+[node name="RoundEnd" parent="UI" instance=ExtResource("11_ya4ey")]
 visible = false
 layout_mode = 0
-offset_right = 1280.0
-offset_bottom = 720.0
-color = Color(0.717647, 0.717647, 0.717647, 0.490196)
-
-[node name="GameOver" type="Label" parent="UI"]
-visible = false
-layout_mode = 0
-offset_right = 1280.0
-offset_bottom = 720.0
-theme_override_font_sizes/font_size = 64
-text = "Game Over!"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="NextCustomerTimer" type="Timer" parent="."]
 wait_time = 5.0
@@ -204,10 +203,9 @@ wait_time = 5.0
 [node name="RoundTimer" type="Timer" parent="."]
 wait_time = 30.0
 one_shot = true
-autostart = true
 
-[connection signal="ingredient_selected" from="UI/IngredientShelf/Ingredient1" to="." method="_ingredient_selected"]
-[connection signal="ingredient_selected" from="UI/IngredientShelf/Ingredient2" to="." method="_ingredient_selected"]
+[connection signal="ingredient_selected" from="UI/IngredientShelf/Water" to="." method="_ingredient_selected"]
+[connection signal="ingredient_selected" from="UI/IngredientShelf/Wine" to="." method="_ingredient_selected"]
 [connection signal="ingredient_selected" from="UI/IngredientShelf2/Moonbell" to="." method="_ingredient_selected"]
 [connection signal="ingredient_selected" from="UI/IngredientShelf2/Shadowbark" to="." method="_ingredient_selected"]
 [connection signal="ingredient_selected" from="UI/IngredientShelf2/CrimsonSage" to="." method="_ingredient_selected"]

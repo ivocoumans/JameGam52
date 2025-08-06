@@ -4,16 +4,18 @@ var _recipes = {
 	# tier 1
 	[Ingredients.Types.Water, Ingredients.Types.Moonbell]: Potions.Types.WeakHealing,
 	[Ingredients.Types.Water, Ingredients.Types.Shadowbark]: Potions.Types.WeakAntidote,
-	[Ingredients.Types.Wine, Ingredients.Types.CrimsonSage]: Potions.Types.MinorStrength,
 	
 	# tier 2
+	[Ingredients.Types.Wine, Ingredients.Types.CrimsonSage]: Potions.Types.MinorStrength,
 	[Ingredients.Types.Water, Ingredients.Types.Moonbell, Ingredients.Types.UnicornDust]: Potions.Types.Healing,
-	[Ingredients.Types.Water, Ingredients.Types.Shadowbark, Ingredients.Types.PixieWings]: Potions.Types.Antidote,
-	[Ingredients.Types.Wine, Ingredients.Types.CrimsonSage, Ingredients.Types.DragonScales]: Potions.Types.Strength,
 	
 	# tier 3
-	[Ingredients.Types.Water, Ingredients.Types.Moonbell, Ingredients.Types.Thornweed, Ingredients.Types.TrollFat]: Potions.Types.NightVision,
-	[Ingredients.Types.Wine, Ingredients.Types.CrimsonSage, Ingredients.Types.EmberRoot, Ingredients.Types.DragonScales]: Potions.Types.BerserkersRage,
+	[Ingredients.Types.Wine, Ingredients.Types.CrimsonSage, Ingredients.Types.DragonScales]: Potions.Types.Strength,
+	[Ingredients.Types.Water, Ingredients.Types.Shadowbark, Ingredients.Types.PixieWings]: Potions.Types.Antidote,
+	
+	# tier 4
+	[Ingredients.Types.Water, Ingredients.Types.Thornweed, Ingredients.Types.TrollFat]: Potions.Types.NightVision,
+	[Ingredients.Types.Wine, Ingredients.Types.EmberRoot, Ingredients.Types.DragonScales]: Potions.Types.BerserkersRage,
 }
 var _potion_to_ingredients = {}
 
