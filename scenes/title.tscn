@@ -1,0 +1,96 @@
+[gd_scene load_steps=7 format=3 uid="uid://cl3snh3aqh7v4"]
+
+[ext_resource type="Script" uid="uid://dj8b21mkx1qic" path="res://scenes/title.gd" id="1_4ignj"]
+[ext_resource type="Texture2D" uid="uid://bfwqw816tn725" path="res://assets/background.png" id="2_wosw1"]
+[ext_resource type="Texture2D" uid="uid://dpgqu66e2mbgm" path="res://assets/panel.png" id="3_b3w7a"]
+[ext_resource type="Texture2D" uid="uid://3ih0rxnpg58r" path="res://assets/button_help.png" id="4_4rr2b"]
+[ext_resource type="Texture2D" uid="uid://b7gbllsvhamw6" path="res://assets/audio_on.png" id="4_pyl7j"]
+[ext_resource type="Texture2D" uid="uid://d246vc7yihjgx" path="res://assets/audio_off.png" id="5_b3w7a"]
+
+[node name="Title" type="Node"]
+script = ExtResource("1_4ignj")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="Background" type="TextureRect" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_wosw1")
+
+[node name="ColorRect" type="ColorRect" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.392157)
+
+[node name="ElementsCenter" type="CenterContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="UI/ElementsCenter"]
+custom_minimum_size = Vector2(575, 375)
+layout_mode = 2
+texture = ExtResource("3_b3w7a")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/ElementsCenter"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="UI/ElementsCenter/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 72
+text = "Alchemy Shop"
+horizontal_alignment = 1
+
+[node name="ButtonStart" type="Button" parent="UI/ElementsCenter/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Start Game"
+
+[node name="ButtonQuit" type="Button" parent="UI/ElementsCenter/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Quit Game"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/ElementsCenter/VBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="ButtonHelp" type="TextureButton" parent="UI/ElementsCenter/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_4rr2b")
+
+[node name="ButtonAudioOn" type="TextureButton" parent="UI/ElementsCenter/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_pyl7j")
+
+[node name="ButtonAudioOff" type="TextureButton" parent="UI/ElementsCenter/VBoxContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+texture_normal = ExtResource("5_b3w7a")
+
+[connection signal="pressed" from="UI/ElementsCenter/VBoxContainer/ButtonStart" to="." method="_button_start_pressed"]
+[connection signal="pressed" from="UI/ElementsCenter/VBoxContainer/ButtonQuit" to="." method="_button_quit_pressed"]
+[connection signal="pressed" from="UI/ElementsCenter/VBoxContainer/HBoxContainer/ButtonHelp" to="." method="_button_help_pressed"]
+[connection signal="pressed" from="UI/ElementsCenter/VBoxContainer/HBoxContainer/ButtonAudioOn" to="." method="_button_audio_on_pressed"]
+[connection signal="pressed" from="UI/ElementsCenter/VBoxContainer/HBoxContainer/ButtonAudioOff" to="." method="_button_audio_off_pressed"]

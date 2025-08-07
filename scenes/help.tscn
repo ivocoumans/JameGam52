@@ -1,0 +1,75 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwf3tb150fjfg"]
+
+[ext_resource type="Script" uid="uid://8tvdiweyq3tf" path="res://scenes/help.gd" id="1_50phg"]
+[ext_resource type="Texture2D" uid="uid://dpgqu66e2mbgm" path="res://assets/panel.png" id="2_oar4r"]
+
+[node name="Help" type="Node"]
+script = ExtResource("1_50phg")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="ColorRect" type="ColorRect" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.392157)
+
+[node name="CenterContainer" type="CenterContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="UI/CenterContainer"]
+custom_minimum_size = Vector2(575, 375)
+layout_mode = 2
+texture = ExtResource("2_oar4r")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/CenterContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="UI/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "Click ingredients to add them"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="UI/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "to your bucket."
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="UI/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "Press SPACE to finish it"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="UI/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "Press C or R to empty"
+horizontal_alignment = 1
+
+[node name="ButtonQuit" type="Button" parent="UI/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Return to title"
+
+[connection signal="pressed" from="UI/CenterContainer/VBoxContainer/ButtonQuit" to="." method="_button_quit_pressed"]

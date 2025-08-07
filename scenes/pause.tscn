@@ -1,0 +1,80 @@
+[gd_scene load_steps=5 format=3 uid="uid://cx4yelhcyluig"]
+
+[ext_resource type="Script" path="res://scenes/pause.gd" id="1_m0klm"]
+[ext_resource type="Texture2D" uid="uid://b7gbllsvhamw6" path="res://assets/audio_on.png" id="1_r8yp4"]
+[ext_resource type="Texture2D" uid="uid://dpgqu66e2mbgm" path="res://assets/panel.png" id="2_aicil"]
+[ext_resource type="Texture2D" uid="uid://d246vc7yihjgx" path="res://assets/audio_off.png" id="2_m0klm"]
+
+[node name="Pause" type="Node"]
+script = ExtResource("1_m0klm")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="ColorRect" type="ColorRect" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.392157)
+
+[node name="CenterContainer" type="CenterContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="UI/CenterContainer"]
+custom_minimum_size = Vector2(575, 375)
+layout_mode = 2
+texture = ExtResource("2_aicil")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/CenterContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="UI/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 72
+text = "Paused"
+horizontal_alignment = 1
+
+[node name="ButtonStart" type="Button" parent="UI/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Continue"
+
+[node name="ButtonQuit" type="Button" parent="UI/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Return to title"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/CenterContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="ButtonAudioOn" type="TextureButton" parent="UI/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_r8yp4")
+
+[node name="ButtonAudioOff" type="TextureButton" parent="UI/CenterContainer/VBoxContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+texture_normal = ExtResource("2_m0klm")
+
+[connection signal="pressed" from="UI/CenterContainer/VBoxContainer/ButtonStart" to="." method="_button_start_pressed"]
+[connection signal="pressed" from="UI/CenterContainer/VBoxContainer/ButtonQuit" to="." method="_button_quit_pressed"]
+[connection signal="pressed" from="UI/CenterContainer/VBoxContainer/HBoxContainer/ButtonAudioOn" to="." method="_button_audio_on_pressed"]
+[connection signal="pressed" from="UI/CenterContainer/VBoxContainer/HBoxContainer/ButtonAudioOff" to="." method="_button_audio_off_pressed"]

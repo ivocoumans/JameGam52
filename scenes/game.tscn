@@ -1,0 +1,225 @@
+[gd_scene load_steps=11 format=3 uid="uid://boo72pcxkwau"]
+
+[ext_resource type="Script" uid="uid://bub53qw6ofrol" path="res://scenes/game.gd" id="1_kvpfn"]
+[ext_resource type="Texture2D" uid="uid://bfwqw816tn725" path="res://assets/background.png" id="2_dinhu"]
+[ext_resource type="PackedScene" uid="uid://btyl8xk4nrib3" path="res://gameobjects/ingredient.tscn" id="3_kvuet"]
+[ext_resource type="Texture2D" uid="uid://dpgqu66e2mbgm" path="res://assets/panel.png" id="4_trtic"]
+[ext_resource type="Texture2D" uid="uid://culwrujspemne" path="res://assets/potion_healing.png" id="5_ir15t"]
+[ext_resource type="PackedScene" uid="uid://bv7mrvo8atsbc" path="res://gameobjects/bucket.tscn" id="6_ca42v"]
+[ext_resource type="PackedScene" uid="uid://dgjrr22la0f7l" path="res://gameobjects/bucket_potion.tscn" id="7_rysoc"]
+[ext_resource type="Texture2D" uid="uid://dsj62ib26vcvf" path="res://assets/bucket_empty.png" id="8_ssvqc"]
+[ext_resource type="PackedScene" uid="uid://dhwxtdtaxn3nm" path="res://gameobjects/retry.tscn" id="9_264po"]
+[ext_resource type="PackedScene" uid="uid://xeqihlf6hgky" path="res://gameobjects/finish.tscn" id="10_1kice"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+script = ExtResource("1_kvpfn")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Background" type="TextureRect" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_dinhu")
+
+[node name="IngredientShelf" type="HBoxContainer" parent="UI"]
+layout_mode = 0
+offset_top = 37.0
+offset_right = 1280.0
+offset_bottom = 101.0
+mouse_filter = 2
+alignment = 1
+
+[node name="Water" parent="UI/IngredientShelf" instance=ExtResource("3_kvuet")]
+visible = false
+layout_mode = 2
+
+[node name="Wine" parent="UI/IngredientShelf" instance=ExtResource("3_kvuet")]
+visible = false
+layout_mode = 2
+type = 1
+
+[node name="IngredientShelf2" type="HBoxContainer" parent="UI"]
+layout_mode = 0
+offset_top = 117.0
+offset_right = 1280.0
+offset_bottom = 181.0
+mouse_filter = 2
+alignment = 1
+
+[node name="Moonbell" parent="UI/IngredientShelf2" instance=ExtResource("3_kvuet")]
+visible = false
+layout_mode = 2
+type = 2
+
+[node name="Shadowbark" parent="UI/IngredientShelf2" instance=ExtResource("3_kvuet")]
+visible = false
+layout_mode = 2
+type = 6
+
+[node name="CrimsonSage" parent="UI/IngredientShelf2" instance=ExtResource("3_kvuet")]
+visible = false
+layout_mode = 2
+type = 3
+
+[node name="Thornweed" parent="UI/IngredientShelf2" instance=ExtResource("3_kvuet")]
+visible = false
+layout_mode = 2
+type = 4
+
+[node name="EmberRoot" parent="UI/IngredientShelf2" instance=ExtResource("3_kvuet")]
+visible = false
+layout_mode = 2
+type = 5
+
+[node name="IngredientShelf3" type="HBoxContainer" parent="UI"]
+layout_mode = 0
+offset_top = 197.0
+offset_right = 1280.0
+offset_bottom = 261.0
+mouse_filter = 2
+alignment = 1
+
+[node name="UnicornDust" parent="UI/IngredientShelf3" instance=ExtResource("3_kvuet")]
+visible = false
+layout_mode = 2
+type = 7
+
+[node name="PixieWings" parent="UI/IngredientShelf3" instance=ExtResource("3_kvuet")]
+visible = false
+layout_mode = 2
+type = 9
+
+[node name="DragonScales" parent="UI/IngredientShelf3" instance=ExtResource("3_kvuet")]
+visible = false
+layout_mode = 2
+type = 8
+
+[node name="TrollFat" parent="UI/IngredientShelf3" instance=ExtResource("3_kvuet")]
+visible = false
+layout_mode = 2
+type = 10
+
+[node name="RecipePreview" type="Control" parent="UI"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="UI/RecipePreview"]
+layout_mode = 0
+offset_left = 1088.0
+offset_top = 32.0
+offset_right = 1248.0
+offset_bottom = 192.0
+texture = ExtResource("4_trtic")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="Potion" type="TextureRect" parent="UI/RecipePreview"]
+layout_mode = 0
+offset_left = 1168.0
+offset_top = 48.0
+offset_right = 1232.0
+offset_bottom = 112.0
+texture = ExtResource("5_ir15t")
+
+[node name="Recipe" type="HBoxContainer" parent="UI/RecipePreview"]
+layout_mode = 0
+offset_left = 848.0
+offset_top = 112.0
+offset_right = 1232.0
+offset_bottom = 176.0
+mouse_filter = 2
+alignment = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="UI"]
+layout_mode = 0
+offset_top = 112.0
+offset_right = 1280.0
+offset_bottom = 704.0
+mouse_filter = 2
+
+[node name="Bucket" parent="UI/CenterContainer" instance=ExtResource("6_ca42v")]
+layout_mode = 2
+
+[node name="BucketPotion" parent="UI/CenterContainer" instance=ExtResource("7_rysoc")]
+layout_mode = 2
+texture = ExtResource("8_ssvqc")
+
+[node name="Retry" parent="UI" instance=ExtResource("9_264po")]
+layout_mode = 0
+offset_left = 739.0
+offset_top = 337.0
+offset_right = 803.0
+offset_bottom = 401.0
+
+[node name="Finish" parent="UI" instance=ExtResource("10_1kice")]
+layout_mode = 0
+offset_left = 738.0
+offset_top = 414.0
+offset_right = 802.0
+offset_bottom = 478.0
+
+[node name="CustomerQueue" type="HBoxContainer" parent="UI"]
+layout_mode = 0
+offset_left = 504.0
+offset_top = 464.0
+offset_right = 1280.0
+offset_bottom = 720.0
+mouse_filter = 2
+
+[node name="Score" type="Label" parent="UI"]
+layout_mode = 0
+offset_top = 56.0
+offset_right = 117.0
+offset_bottom = 105.0
+theme_override_font_sizes/font_size = 35
+text = "Gold: 0"
+
+[node name="TimeLeft" type="Label" parent="UI"]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 117.0
+offset_bottom = 50.0
+theme_override_font_sizes/font_size = 35
+text = "Time left: 30"
+
+[node name="NextCustomerTimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="RoundTimer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+
+[connection signal="ingredient_selected" from="UI/IngredientShelf/Water" to="." method="_ingredient_selected"]
+[connection signal="ingredient_selected" from="UI/IngredientShelf/Wine" to="." method="_ingredient_selected"]
+[connection signal="ingredient_selected" from="UI/IngredientShelf2/Moonbell" to="." method="_ingredient_selected"]
+[connection signal="ingredient_selected" from="UI/IngredientShelf2/Shadowbark" to="." method="_ingredient_selected"]
+[connection signal="ingredient_selected" from="UI/IngredientShelf2/CrimsonSage" to="." method="_ingredient_selected"]
+[connection signal="ingredient_selected" from="UI/IngredientShelf2/Thornweed" to="." method="_ingredient_selected"]
+[connection signal="ingredient_selected" from="UI/IngredientShelf2/EmberRoot" to="." method="_ingredient_selected"]
+[connection signal="ingredient_selected" from="UI/IngredientShelf3/UnicornDust" to="." method="_ingredient_selected"]
+[connection signal="ingredient_selected" from="UI/IngredientShelf3/PixieWings" to="." method="_ingredient_selected"]
+[connection signal="ingredient_selected" from="UI/IngredientShelf3/DragonScales" to="." method="_ingredient_selected"]
+[connection signal="ingredient_selected" from="UI/IngredientShelf3/TrollFat" to="." method="_ingredient_selected"]
+[connection signal="retry_clicked" from="UI/Retry" to="." method="_retry_clicked"]
+[connection signal="finish_clicked" from="UI/Finish" to="." method="_finish_clicked"]
+[connection signal="timeout" from="NextCustomerTimer" to="." method="_next_customer_timer_timeout"]
+[connection signal="timeout" from="RoundTimer" to="." method="_round_timer_timeout"]

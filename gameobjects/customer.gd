@@ -42,3 +42,11 @@ func _set_textures(new_texture: Texture2D) -> void:
 
 func _timer_timeout():
 	customer_left.emit(self)
+
+
+func pause_timer() -> void:
+	$Timer.paused = true
+
+
+func unpause_timer() -> void:
+	$Timer.paused = false
