@@ -75,12 +75,10 @@ func unmute() -> void:
 
 func _play_sfx(effect_name: String, volume_db: float = 0.0, pitch_variation: float = 0.2) -> void:
 	if not _sound_effects.has(effect_name):
-		print("Sound effect not found: ", effect_name)
 		return
 	
 	var variants = _sound_effects[effect_name]
 	if variants.is_empty():
-		print("No audio found for sound effect: ", effect_name)
 		return
 	
 	var sound = variants.pick_random()
@@ -126,7 +124,6 @@ func _get_available_sfx_player() -> AudioStreamPlayer:
 
 func _play_bgm(track_name: String, fade_in: bool = true, volume_db: float = 0.0) -> void:
 	if not _bgm_tracks.has(track_name):
-		print("BGM not found: ", track_name)
 		return
 	
 	if _current_bgm == track_name and _music_player.playing:

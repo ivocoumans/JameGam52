@@ -5,8 +5,6 @@ extends Node
 
 
 func _ready() -> void:
-	if OS.is_debug_build():
-		Audio.mute()
 	Audio.play_bgm_main()
 	_toggle_audio_buttons()
 
