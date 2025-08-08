@@ -94,24 +94,24 @@ func _play_sfx(effect_name: String, volume_db: float = 0.0, pitch_variation: flo
 
 
 func play_sfx_ingredient() -> void:
-	_play_sfx("ingredient", 0.0, 0.2)
+	_play_sfx("ingredient", -10.0, 0.2)
 
 
 func play_sfx_finish() -> void:
-	_play_sfx("finish", -3.0, 0.3)
+	_play_sfx("finish", -15.0, 0.3)
 
 
 func play_sfx_retry() -> void:
-	_play_sfx("retry", -5.0, 0.3)
+	_play_sfx("retry", -15.0, 0.3)
 
 
 func play_sfx_gold() -> void:
 	await get_tree().create_timer(0.2).timeout
-	_play_sfx("gold", -9.0, 0.015)
+	_play_sfx("gold", -21.0, 0.015)
 
 
 func play_sfx_round_end(good: bool = true) -> void:
-	_play_sfx("round_end_good" if good else "round_end_bad", 0.0, 0.0)
+	_play_sfx("round_end_good" if good else "round_end_bad", -10.0, 0.0)
 
 
 func _get_available_sfx_player() -> AudioStreamPlayer:
@@ -143,7 +143,7 @@ func _play_bgm(track_name: String, fade_in: bool = true, volume_db: float = 0.0)
 
 
 func play_bgm_main() -> void:
-	_play_bgm("gameplay", false, 0.0)
+	_play_bgm("gameplay", false, -10.0)
 
 
 func stop_music(fade_out: bool = true):

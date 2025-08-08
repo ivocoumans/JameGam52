@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="JameGam52"
-config/description="My submission for Jame Gam 52, with theme \"Fantasy\" and special object \"Bucket\"."
+config/name="Bucket Brews"
+config/description="My submission for Jame Gam 52, with theme \"Fantasy\" and special object \"Bucket\". You are an alchemy shop owner, and your cauldron was stolen, so you'll have to make do with a bucket for now!"
 config/version="1.0.0"
 run/main_scene="uid://cl3snh3aqh7v4"
 config/features=PackedStringArray("4.4", "GL Compatibility")

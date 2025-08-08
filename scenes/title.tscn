@@ -59,7 +59,7 @@ alignment = 1
 [node name="Label" type="Label" parent="UI/ElementsCenter/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 72
-text = "Alchemy Shop"
+text = "Bucket Brews"
 horizontal_alignment = 1
 
 [node name="ButtonStart" type="Button" parent="UI/ElementsCenter/VBoxContainer"]
