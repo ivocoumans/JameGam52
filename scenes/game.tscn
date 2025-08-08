@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://boo72pcxkwau"]
+[gd_scene load_steps=15 format=3 uid="uid://boo72pcxkwau"]
 
 [ext_resource type="Script" uid="uid://bub53qw6ofrol" path="res://scenes/game.gd" id="1_kvpfn"]
 [ext_resource type="Texture2D" uid="uid://bfwqw816tn725" path="res://assets/background.png" id="2_dinhu"]
@@ -6,9 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://dpgqu66e2mbgm" path="res://assets/panel.png" id="4_trtic"]
 [ext_resource type="Texture2D" uid="uid://culwrujspemne" path="res://assets/potion_healing.png" id="5_ir15t"]
 [ext_resource type="PackedScene" uid="uid://bv7mrvo8atsbc" path="res://gameobjects/bucket.tscn" id="6_ca42v"]
+[ext_resource type="Texture2D" uid="uid://cjyeww1424sy2" path="res://assets/equals.png" id="6_kvpfn"]
+[ext_resource type="Texture2D" uid="uid://xhx7m80ey3v3" path="res://assets/ingredient_moonbell.png" id="7_dinhu"]
 [ext_resource type="PackedScene" uid="uid://dgjrr22la0f7l" path="res://gameobjects/bucket_potion.tscn" id="7_rysoc"]
 [ext_resource type="Texture2D" uid="uid://dsj62ib26vcvf" path="res://assets/bucket_empty.png" id="8_ssvqc"]
+[ext_resource type="Texture2D" uid="uid://baovw3txmqly" path="res://assets/ingredient_water.png" id="8_trtic"]
 [ext_resource type="PackedScene" uid="uid://dhwxtdtaxn3nm" path="res://gameobjects/retry.tscn" id="9_264po"]
+[ext_resource type="Texture2D" uid="uid://chuj6qre3fadu" path="res://assets/ingredient_emberroot.png" id="9_ir15t"]
 [ext_resource type="PackedScene" uid="uid://xeqihlf6hgky" path="res://gameobjects/finish.tscn" id="10_1kice"]
 
 [node name="Main" type="Control"]
@@ -115,39 +119,56 @@ layout_mode = 2
 type = 10
 
 [node name="RecipePreview" type="Control" parent="UI"]
-visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="NinePatchRect" type="NinePatchRect" parent="UI/RecipePreview"]
 layout_mode = 0
-offset_left = 1088.0
+offset_left = 960.0
 offset_top = 32.0
 offset_right = 1248.0
-offset_bottom = 192.0
+offset_bottom = 112.0
 texture = ExtResource("4_trtic")
 patch_margin_left = 4
 patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
 
-[node name="Potion" type="TextureRect" parent="UI/RecipePreview"]
-layout_mode = 0
-offset_left = 1168.0
-offset_top = 48.0
-offset_right = 1232.0
-offset_bottom = 112.0
-texture = ExtResource("5_ir15t")
-
 [node name="Recipe" type="HBoxContainer" parent="UI/RecipePreview"]
+custom_minimum_size = Vector2(256, 48)
 layout_mode = 0
-offset_left = 848.0
-offset_top = 112.0
-offset_right = 1232.0
-offset_bottom = 176.0
+offset_left = 980.0
+offset_top = 48.0
+offset_right = 1236.0
+offset_bottom = 96.0
 mouse_filter = 2
 alignment = 2
+
+[node name="TextureRect2" type="TextureRect" parent="UI/RecipePreview/Recipe"]
+layout_mode = 2
+texture = ExtResource("8_trtic")
+expand_mode = 3
+
+[node name="TextureRect3" type="TextureRect" parent="UI/RecipePreview/Recipe"]
+layout_mode = 2
+texture = ExtResource("7_dinhu")
+expand_mode = 3
+
+[node name="TextureRect4" type="TextureRect" parent="UI/RecipePreview/Recipe"]
+layout_mode = 2
+texture = ExtResource("9_ir15t")
+expand_mode = 3
+
+[node name="TextureRect5" type="TextureRect" parent="UI/RecipePreview/Recipe"]
+layout_mode = 2
+texture = ExtResource("6_kvpfn")
+expand_mode = 3
+
+[node name="TextureRect6" type="TextureRect" parent="UI/RecipePreview/Recipe"]
+layout_mode = 2
+texture = ExtResource("5_ir15t")
+expand_mode = 3
 
 [node name="CenterContainer" type="CenterContainer" parent="UI"]
 layout_mode = 0
@@ -155,6 +176,7 @@ offset_top = 112.0
 offset_right = 1280.0
 offset_bottom = 704.0
 mouse_filter = 2
+metadata/_edit_lock_ = true
 
 [node name="Bucket" parent="UI/CenterContainer" instance=ExtResource("6_ca42v")]
 layout_mode = 2

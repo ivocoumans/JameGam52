@@ -1,6 +1,7 @@
 extends Control
 
 @onready var CustomerScene: PackedScene = preload("res://gameobjects/customer.tscn")
+@onready var equals_texture: Texture2D = preload("res://assets/equals.png")
 
 const CONTINUE_TIMER = 2
 
@@ -13,9 +14,6 @@ var _current_timer_display_value = 0
 
 func _ready() -> void:
 	SignalBus.unpaused.connect(_unpause)
-	# TODO: show game start overlay
-	if OS.is_debug_build():
-		$RoundTimer.wait_time = 10
 	_next_round()
 
 
@@ -39,7 +37,6 @@ func _process(_delta: float) -> void:
 		$UI/TimeLeft.text = "Time Left: " + str(_current_timer_display_value)
 	
 	if $RoundTimer.time_left <= 10 and !$NextCustomerTimer.is_stopped():
-		print("No more customers")
 		$NextCustomerTimer.stop()
 		_next_customer(true)
 
@@ -108,7 +105,6 @@ func _ingredient_selected(type: Ingredients.Types) -> void:
 		return
 	$UI/Retry.visible = true
 	$UI/Finish.visible = $UI/CenterContainer/BucketPotion.is_finished
-	print("Ingredient " + Ingredients.get_text(type) + " added")
 	Audio.play_sfx_ingredient()
 
 
@@ -138,8 +134,6 @@ func _finish_clicked() -> void:
 	Audio.play_sfx_finish()
 	
 	_update_recipe_preview()
-	
-	print("Finished potion " + Potions.get_text(potion))
 
 
 func _get_reward_for_potion(potion: Potions.Types) -> int:
@@ -172,7 +166,6 @@ func _next_customer(skip_timer = false) -> void:
 	if $RoundTimer.time_left <= 10 and !skip_timer:
 		return
 	
-	# TODO: clear bucket, or disable it when there are no customers?
 	var new_customer: Customer = CustomerScene.instantiate()
 	new_customer.type = _get_random_potion()
 	new_customer.customer_left.connect(_customer_left)
@@ -180,8 +173,6 @@ func _next_customer(skip_timer = false) -> void:
 	$UI/CustomerQueue.add_child(new_customer)
 	
 	_update_recipe_preview()
-	
-	print("Customer spawned with potion " + Potions.get_text(new_customer.type))
 
 
 func _update_recipe_preview() -> void:
@@ -201,23 +192,26 @@ func _update_recipe_preview() -> void:
 	var textures = []
 	for ingredient in ingredients:
 		textures.append(Ingredients.textures[ingredient])
-	$UI/RecipePreview/Potion.texture = Potions.textures[potion_type]
+	textures.append(equals_texture)
+	textures.append(Potions.textures[potion_type])
+	
+	var texture_size = 48
 	for texture in textures:
 		var child = TextureRect.new()
 		child.texture = texture
+		child.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
+		child.size = Vector2(texture_size, texture_size)
 		$UI/RecipePreview/Recipe.add_child(child)
 	
 	# panel
 	var margin = 16
-	var width = 64 * textures.size() + (margin * 2)
-	var height = 128 + (margin * 2)
+	var width = texture_size * textures.size() + (margin * 2) + (4 * (textures.size() - 1))
+	var height = texture_size + (margin * 2)
 	$UI/RecipePreview/NinePatchRect.size = Vector2(width, height)
 	$UI/RecipePreview/NinePatchRect.position = Vector2(1280 - 32 - width, 32)
 	
 	# show elements
 	$UI/RecipePreview.visible = true
-	
-	print("Show recipe for potion " + Potions.get_text(potion_type))
 
 
 func _customer_left(customer: Customer) -> void:
@@ -264,6 +258,8 @@ func _round_timer_timeout():
 	SceneManager.set_game_data("round_score", _round_score)
 	
 	if _round_score > 0:
+		SceneManager.set_game_data("current_round", _current_round)
+		SceneManager.set_game_data("current_tier", _current_tier)
 		SceneManager.show_round_end()
 	else:
 		SceneManager.show_game_over()

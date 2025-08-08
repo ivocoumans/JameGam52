@@ -58,8 +58,6 @@ func _load_single_scene(scene: Scene):
 func _load_game_scene():
 	if game_scene_instance != null:
 		_clear_overlay()
-		#if game_scene_instance:
-			#game_scene_instance.visible = true
 		return
 	
 	_clear_overlay()
@@ -73,9 +71,6 @@ func _load_game_scene():
 
 
 func _show_overlay(scene: Scene):
-	#if game_scene_instance:
-		#game_scene_instance.visible = false
-	
 	_clear_overlay()
 	var overlay_resource = load(SCENES[scene])
 	overlay_scene = overlay_resource.instantiate()

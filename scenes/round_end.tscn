@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvx8vauaks5gk"]
+[gd_scene load_steps=10 format=3 uid="uid://cvx8vauaks5gk"]
 
 [ext_resource type="Script" uid="uid://da6seedj4fm8v" path="res://scenes/round_end.gd" id="1_7rbo8"]
 [ext_resource type="Texture2D" uid="uid://b7gbllsvhamw6" path="res://assets/audio_on.png" id="2_5tybl"]
 [ext_resource type="Texture2D" uid="uid://dpgqu66e2mbgm" path="res://assets/panel.png" id="2_clbpt"]
 [ext_resource type="Texture2D" uid="uid://d246vc7yihjgx" path="res://assets/audio_off.png" id="3_clbpt"]
+[ext_resource type="Texture2D" uid="uid://baovw3txmqly" path="res://assets/ingredient_water.png" id="5_k3sa8"]
+[ext_resource type="Texture2D" uid="uid://xhx7m80ey3v3" path="res://assets/ingredient_moonbell.png" id="6_caoca"]
+[ext_resource type="Texture2D" uid="uid://chuj6qre3fadu" path="res://assets/ingredient_emberroot.png" id="7_3u4it"]
+[ext_resource type="Texture2D" uid="uid://cjyeww1424sy2" path="res://assets/equals.png" id="8_db4u5"]
+[ext_resource type="Texture2D" uid="uid://culwrujspemne" path="res://assets/potion_healing.png" id="9_dcxjl"]
 
 [node name="RoundEnd" type="Node"]
 script = ExtResource("1_7rbo8")
@@ -79,6 +84,102 @@ texture_normal = ExtResource("2_5tybl")
 visible = false
 layout_mode = 2
 texture_normal = ExtResource("3_clbpt")
+
+[node name="TierInfo" type="Control" parent="UI"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="UI/TierInfo"]
+layout_mode = 0
+offset_left = 944.0
+offset_top = 172.0
+offset_right = 1232.0
+offset_bottom = 348.0
+texture = ExtResource("2_clbpt")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="Label" type="Label" parent="UI/TierInfo"]
+layout_mode = 0
+offset_left = 1000.0
+offset_top = 184.0
+offset_right = 1189.0
+offset_bottom = 229.0
+theme_override_font_sizes/font_size = 32
+text = "New recipes"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/TierInfo"]
+layout_mode = 2
+offset_left = 964.0
+offset_top = 236.0
+offset_right = 1220.0
+offset_bottom = 336.0
+
+[node name="Recipe" type="HBoxContainer" parent="UI/TierInfo/VBoxContainer"]
+custom_minimum_size = Vector2(256, 48)
+layout_mode = 2
+mouse_filter = 2
+alignment = 2
+
+[node name="TextureRect2" type="TextureRect" parent="UI/TierInfo/VBoxContainer/Recipe"]
+layout_mode = 2
+texture = ExtResource("5_k3sa8")
+expand_mode = 3
+
+[node name="TextureRect3" type="TextureRect" parent="UI/TierInfo/VBoxContainer/Recipe"]
+layout_mode = 2
+texture = ExtResource("6_caoca")
+expand_mode = 3
+
+[node name="TextureRect4" type="TextureRect" parent="UI/TierInfo/VBoxContainer/Recipe"]
+layout_mode = 2
+texture = ExtResource("7_3u4it")
+expand_mode = 3
+
+[node name="TextureRect5" type="TextureRect" parent="UI/TierInfo/VBoxContainer/Recipe"]
+layout_mode = 2
+texture = ExtResource("8_db4u5")
+expand_mode = 3
+
+[node name="TextureRect6" type="TextureRect" parent="UI/TierInfo/VBoxContainer/Recipe"]
+layout_mode = 2
+texture = ExtResource("9_dcxjl")
+expand_mode = 3
+
+[node name="Recipe2" type="HBoxContainer" parent="UI/TierInfo/VBoxContainer"]
+custom_minimum_size = Vector2(256, 48)
+layout_mode = 2
+mouse_filter = 2
+alignment = 2
+
+[node name="TextureRect2" type="TextureRect" parent="UI/TierInfo/VBoxContainer/Recipe2"]
+layout_mode = 2
+texture = ExtResource("5_k3sa8")
+expand_mode = 3
+
+[node name="TextureRect3" type="TextureRect" parent="UI/TierInfo/VBoxContainer/Recipe2"]
+layout_mode = 2
+texture = ExtResource("6_caoca")
+expand_mode = 3
+
+[node name="TextureRect4" type="TextureRect" parent="UI/TierInfo/VBoxContainer/Recipe2"]
+layout_mode = 2
+texture = ExtResource("7_3u4it")
+expand_mode = 3
+
+[node name="TextureRect5" type="TextureRect" parent="UI/TierInfo/VBoxContainer/Recipe2"]
+layout_mode = 2
+texture = ExtResource("8_db4u5")
+expand_mode = 3
+
+[node name="TextureRect6" type="TextureRect" parent="UI/TierInfo/VBoxContainer/Recipe2"]
+layout_mode = 2
+texture = ExtResource("9_dcxjl")
+expand_mode = 3
 
 [connection signal="pressed" from="UI/CenterContainer/VBoxContainer/ButtonStart" to="." method="_button_start_pressed"]
 [connection signal="pressed" from="UI/CenterContainer/VBoxContainer/ButtonQuit" to="." method="_button_quit_pressed"]

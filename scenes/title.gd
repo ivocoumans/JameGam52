@@ -5,6 +5,8 @@ extends Node
 
 
 func _ready() -> void:
+	if OS.is_debug_build():
+		Audio.mute()
 	Audio.play_bgm_main()
 	_toggle_audio_buttons()
 
@@ -15,6 +17,9 @@ func _toggle_audio_buttons() -> void:
 
 
 func _input(event) -> void:
+	if SceneManager.current_scene != SceneManager.Scene.TITLE:
+		return
+	
 	if event.is_action_released("ui_cancel"):
 		get_tree().quit()
 
